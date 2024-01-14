@@ -100,22 +100,12 @@ function App() {
     })
   }
 
-  const [favcount, setFavCount] = useState(0);
-
-  const favouriteCount = (count) => {
-    setFavCount(()=>{
-      return songdata.forEach((item)=>{
-        if (item.added === true) {count++;}
-        return count;
-      })
-    })
-  }
 
 
   return (
     <>
       <div className="w-full h-screen bgzinc-300">
-        <Navbar count= {0} favouriteCount = {favouriteCount} />
+        <Navbar data = {songdata} />
         <div className="px-20 flex gap-10 mt-32 flex-wrap">
           {songdata.map((obj, index) => (
             <Card key={index} handleClick = {handleClick} index = {index} data = {obj} />
