@@ -60,4 +60,33 @@ import React, {useRef, useState} from "react";
 // }
 
 
+
+
+// ---------------------------------    WAY 3 - Using React hook 'form' ----------------------------------------------------------------
+
+
+
+// function App(){
+
+
+//   const {register, handleSubmit} = useForm()
+
+
+//   return (
+//   <>
+//     <div className = "p-4">
+//       <form action="" onSubmit={handleSubmit(data => console.log(data))}>
+//         <input {...register('name')} className="border-2 m-2" type="text" placeholder="name"/>
+//         <input {...register('email')} className="border-2 m-2" type="text" placeholder="email"/>
+//       </form>
+//     </div>
+//   </>
+//   )
+// }
+
+
+
+export default App;
+
+
 export default App;
