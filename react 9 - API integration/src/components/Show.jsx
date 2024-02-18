@@ -1,5 +1,5 @@
-import { React, useState } from "react";
-import axios from "axios";
+import axios from "../utils/Axios.jsx";
+import { React, useState, useEffect } from "react";
 
 
 
@@ -9,16 +9,20 @@ function Show() {
   const [products, setProducts] = useState([]);
 
   const getProduts = () => {
-    const api = "https://fakestoreapi.com/products";
-
+    
     axios
-      .get(api)
+      .get("/products")
       .then((products) => {
         console.log(products);
         setProducts(products.data);
       })
       .catch((err) => console.log(err));
   };
+
+
+  useEffect(() => {
+    getProduts();
+  },[])
 
   return (
     <>
@@ -29,7 +33,7 @@ function Show() {
         Get API data!!!
       </button>
 
-      <ul>
+      <ul className="pt-5">
         {products.length > 0 ? (
           products.map((p) => (
             <li key={p.id} className="rounded-md mb-2 p-5 bg-red-300">
