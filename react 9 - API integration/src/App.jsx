@@ -4,8 +4,8 @@ import Show from "./components/Show"
 import Home from "./components/Home"
 import Services from "./components/Services";
 
-function App() {
-
+// function App() {
+const App = () => {
   return (
     <div className="pt-[5%] pl-[5%]">
       <nav className="flex justify-center gap-10">
