@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import axios from "../utils/axios";
+  
 function Topnav() {
 const [query, setQuery] = useState("");
-  
+
+
+
   return (
     <div className="w-full h-[9vh] relative flex justify-center items-center">
       <i className="text-zinc-400 text-2xl ri-search-line"></i>
