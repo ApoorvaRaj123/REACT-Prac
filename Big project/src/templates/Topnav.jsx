@@ -7,10 +7,9 @@ const [query, setQuery] = useState("");
 
 const getSearch = async () => {
     try {
-      const d = await axios.get(
-        `/search/multi?query=${query}`
-      );
-      console.log(d);
+      const {data} = await axios.get(`/search/multi?query=${query}`);
+      setSearch(data.results);
+      console.log(data);
     } catch (error) {
       console.log("Error hai",error);
     }
@@ -37,35 +36,17 @@ const getSearch = async () => {
         ></i>
       )}
 
-      <div className="w-[50%] absolute h-[50vh] bg-zinc-200 top-[90%] overflow-auto">
-        <Link className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold text-zinc-600 p-10 flex justify-start items-center border-b-2 border-zinc-100">
-          <img src="" alt="" />
-          <span>Hello Everyone</span>
-        </Link>
-        <Link className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold text-zinc-600 p-10 flex justify-start items-center border-b-2 border-zinc-100">
-          <img src="" alt="" />
-          <span>Hello Everyone</span>
-        </Link>
-        <Link className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold text-zinc-600 p-10 flex justify-start items-center border-b-2 border-zinc-100">
-          <img src="" alt="" />
-          <span>Hello Everyone</span>
-        </Link>
-        <Link className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold text-zinc-600 p-10 flex justify-start items-center border-b-2 border-zinc-100">
-          <img src="" alt="" />
-          <span>Hello Everyone</span>
-        </Link>
-        <Link className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold text-zinc-600 p-10 flex justify-start items-center border-b-2 border-zinc-100">
-          <img src="" alt="" />
-          <span>Hello Everyone</span>
-        </Link>
-        <Link className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold text-zinc-600 p-10 flex justify-start items-center border-b-2 border-zinc-100">
-          <img src="" alt="" />
-          <span>Hello Everyone</span>
-        </Link>
-        <Link className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold text-zinc-600 p-10 flex justify-start items-center border-b-2 border-zinc-100">
-          <img src="" alt="" />
-          <span>Hello Everyone</span>
-        </Link>
+      <div className="w-[50%] absolute max-h-[50vh] bg-zinc-200 top-[90%] overflow-auto">
+        {query &&
+          search.map((item, idx) => (
+            <Link
+              key={idx}
+              className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold text-zinc-600 p-10 flex justify-start items-center border-b-2 border-zinc-100"
+            >
+              <img src={item.backdrop_path || item.poster_path} alt="" />
+              <span>{item.name || item.original_name || item.title || item.original_title}</span>
+            </Link>
+          ))}
       </div>
     </div>
    
