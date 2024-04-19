@@ -5,7 +5,20 @@ import axios from "../utils/axios";
 function Topnav() {
 const [query, setQuery] = useState("");
 
+const getSearch = async () => {
+    try {
+      const d = await axios.get(
+        `/search/multi?query=${query}`
+      );
+      console.log(d);
+    } catch (error) {
+      console.log("Error hai",error);
+    }
+  };
 
+  useEffect(() => {
+    getSearch();
+  }, [query]);
 
   return (
     <div className="w-full h-[9vh] relative flex justify-center items-center">
