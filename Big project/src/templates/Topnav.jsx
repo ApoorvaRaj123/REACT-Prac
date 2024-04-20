@@ -1,17 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import axios from "../utils/axios";
-  
-function Topnav() {
-const [query, setQuery] = useState("");
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import noimage from "../assets/noimage.jpg";
 
-const getSearch = async () => {
+function Topnav() {
+  const [query, setQuery] = useState("");
+  const [search, setSearch] = useState([]);
+
+  const getSearch = async () => {
     try {
-      const {data} = await axios.get(`/search/multi?query=${query}`);
+      const { data } = await axios.get(`/search/multi?query=${query}`);
       setSearch(data.results);
       console.log(data);
     } catch (error) {
-      console.log("Error hai",error);
+      console.log("Error ", error);
     }
   };
 
@@ -32,7 +34,7 @@ const getSearch = async () => {
       {query.length > 0 && (
         <i
           onClick={() => setQuery("")}
-          className="text-zinc-400 text-3xl ri-close-line"
+          className="text-zinc-400 hover:cursor-pointer text-3xl ri-close-line"
         ></i>
       )}
 
@@ -41,15 +43,31 @@ const getSearch = async () => {
           search.map((item, idx) => (
             <Link
               key={idx}
-              className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold text-zinc-600 p-10 flex justify-start items-center border-b-2 border-zinc-100"
+              className="hover:text-black hover:bg-zinc-300 duration-300 font-semibold text-zinc-600 p-10 flex justify-start items-center gap-5 border-b-2 border-zinc-100"
             >
-              <img src={item.backdrop_path || item.poster_path} alt="" />
-              <span>{item.name || item.original_name || item.title || item.original_title}</span>
+              <img
+                className="w-[10vw] h-[15vh] object-cover rounded-lg overflow-hidden]"
+                src={
+                  item.backdrop_path || item.profile_path || item.poster_path
+                    ? `https://image.tmdb.org/t/p/original${
+                        item.backdrop_path ||
+                        item.profile_path ||
+                        item.poster_path
+                      }`
+                    : noimage
+                }
+                alt=""
+              />
+              <span>
+                {item.name ||
+                  item.original_name ||
+                  item.title ||
+                  item.original_title}
+              </span>
             </Link>
           ))}
       </div>
     </div>
-   
   );
 }
 
