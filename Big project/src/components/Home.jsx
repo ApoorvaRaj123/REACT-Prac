@@ -28,7 +28,7 @@ function Home(params) {
   return wallpaper ? (
     <div className="flex">
       <Sidenav />
-      <div className="w-[80%] h-screen">
+      <div className="w-[80%] h-screen overflow-y-auto">
         <Topnav />
         <Header data={wallpaper} />
         <HorizontalCards />
