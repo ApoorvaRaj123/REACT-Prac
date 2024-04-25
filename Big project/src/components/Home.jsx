@@ -31,7 +31,7 @@ function Home(params) {
       <div className="w-[80%] h-screen overflow-y-auto">
         <Topnav />
         <Header data={wallpaper} />
-        <HorizontalCards />
+        <HorizontalCards data={wallpaper} />
       </div>
     </div>
   ):<h1>Loading</h1>
