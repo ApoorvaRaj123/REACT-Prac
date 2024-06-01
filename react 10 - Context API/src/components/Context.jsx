@@ -10,6 +10,7 @@ const Context = (props) => {
         {id: 1, name: "John", email: "aa@gmail.com"},
         {id: 2, name: "Apoo", email: "bb@gmail.com"},
         {id: 3, name: "Yash", email: "cc@gmail.com"},
+        {id: 4, name: "Satwik", email: "dd@gmail.com"},
     ])
 
     console.log(props);
